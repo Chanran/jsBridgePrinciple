@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test webview</title>
+    <script>
+    function jsCallJava() {
+      const sendMessageEle = document.querySelector('#sendMessage')
+      const message = sendMessageEle.value || '你好啊'
+      // alert(message)
+      window.testWebView && window.testWebView.jsCallJava(message)
+    }
+    function javaCallJs (message) {
+      const receiveMessageEle = document.querySelector('#receiveMessage')
+      // alert(message)
+      receiveMessageEle.innerHTML = message
+    }
+  </script>
+</head>
+<body>
+<h1 style="margin-top: 50px">这里是webview</h1>
+<div>
+    <p id="receiveMessage">这里接收到java调用js方法的信息</p>
+</div>
+<div>
+    <input id="sendMessage" value="" type="text">
+    <button type="button" onclick="jsCallJava()">测试js调用java方法</button>
+</div>
+</body>
+</html>
